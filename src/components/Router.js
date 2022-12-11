@@ -1,26 +1,23 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Auth from '../routes/Auth';
 import Home from '../routes/Home';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default () => {
-    const [isLoggedIn, setisLoggedIn] = useState(false);
+const AppRouter =  ({ isLoggedIn }) => {
     return(
         <Router>
-            <Switch>
+            <Routes>
                 {isLoggedIn ? (
                     <>
-                        <Route exact path='/'>
-                            <Home />    
-                        </Route> 
+                        <Route path="/" element={<Home />} />
                     </>
                 ) : (
-                    <Route exact path='/'>
-                        <Auth />
-                    </Route>
+                    <Route path="/" element={<Auth />} />
                     )}
-            </Switch>
+            </Routes>
         </Router>
     );
 }
+export default AppRouter;
